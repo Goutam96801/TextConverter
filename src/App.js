@@ -1,10 +1,16 @@
 
 import './App.css';
 import Navbar from './components/Navbar';
+import About from './components/About';
 import TextForm from './components/TextForm';
 import React, { useState } from 'react';
 import Alert from './components/Alert';
 
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
 
 function App() {
@@ -22,9 +28,6 @@ function App() {
     },
       2000)
   }
-
-
-
   const toggleMode = () => {
     if (mode === 'light') {
       setMode('dark');
@@ -39,16 +42,25 @@ function App() {
   }
   return (
     <>
-
-      <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
-
-      <Alert alert={alert} />
-
-      <div className="container">
-        <TextForm heading="Enter text to analyze" mode={mode} showAlert={showAlert} />
-      </div>
+      <Router>
 
 
+        <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
+        <Alert alert={alert} />
+        <div className="container my-3">
+
+          <Routes>
+            <Route exact path="/about" element={<About mode={mode} />} >
+            </Route>
+            <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Try TextUtils - Word Counter, Character Counter, Copy Text, Convert Text in Lowercase as well as Uppercase" mode={mode} />}>
+            </Route>
+          </Routes>
+
+
+        </div>
+
+
+      </Router>
 
     </>
 
