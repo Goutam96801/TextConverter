@@ -1,29 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-export default function About() {
+export default function About(props) {
 
-  const [myStyle, setMyStyle] = useState({
-    color: '#000',
-    backgroundColor: '#fff'
-  })
 
-  const [btnText, setBtnText] = useState('Enable Dark Mode')
-
-  const toggleStyle = () => {
-    if (myStyle.color === '#000') {
-      setMyStyle({
-        color: '#fff',
-        backgroundColor: '#000'
-      })
-      setBtnText('Enable Light Mode')
-    }
-    else {
-      setMyStyle({
-        color: '#000',
-        backgroundColor: '#fff'
-      })
-      setBtnText('Enable Dark Mode')
-    }
+  let myStyle = {
+    color: props.mode === 'dark' ? 'white' : '#343a40',
+    backgroundColor: props.mode === 'dark' ? '#343a40' : 'white'
   }
 
 
@@ -34,42 +16,39 @@ export default function About() {
         <div className="accordion-item">
           <h2 className="accordion-header">
             <button className="accordion-button" style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Accordion Item #1
+              Analyze your text
             </button>
           </h2>
           <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
             <div className="accordion-body" style={myStyle}>
-              <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classNamees that we use to style each element. These classNamees control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              At TextUtils, we aim to provide you with a simple and convenient way to manipulate text. Whether you need to convert characters to uppercase or lowercase, copy text to your clipboard, or clear the text box entirely, our user-friendly tools are here to assist you.
             </div>
           </div>
         </div>
         <div className="accordion-item">
           <h2 className="accordion-header">
             <button className="accordion-button collapsed" style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Accordion Item #2
+              Free to use
             </button>
           </h2>
           <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
             <div className="accordion-body" style={myStyle}>
-              <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classNamees that we use to style each element. These classNamees control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              At TextUtils, we are proud to offer you a completely free text manipulation service. Our tools are designed to provide you with a simple and convenient way to convert characters to uppercase or lowercase, copy text, clear the text box, and more, without any cost to you.
             </div>
           </div>
         </div>
         <div className="accordion-item">
           <h2 className="accordion-header">
             <button className="accordion-button collapsed" style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              Accordion Item #3
+              Browser Compatible
             </button>
           </h2>
           <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
             <div className="accordion-body" style={myStyle}>
-              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classNamees that we use to style each element. These classNamees control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              TextUtils is designed to be intuitive and user-friendly. We prioritize simplicity and efficiency so that you can accomplish your text manipulation goals quickly and with ease. No complex instructions or unnecessary clutter—just the tools you need right at your fingertips.
             </div>
           </div>
         </div>
-      </div>
-      <div className="container my-3 ">
-        <button type='button' onClick={toggleStyle} className='btn btn-primary'>{btnText}</button>
       </div>
     </div>
   )
